@@ -1,0 +1,77 @@
+------ SQL Notları 1. bölüm ------
+
+Desktop diye başlayan alan var orası bağlanmış olduğumuz sqlin yani sunucumuzun ismi yer alıyor.
+Onun üzerinde connect diye bir alan var.
+Connectin hemen yanında connect ve disconnect var bağlan ve bağlantıyı kopar anlamına geliyorlar.
+Deskoptın üzerine sağ tıklayıp properties dediğimiz zaman özelliklerimizi bulunduran alan oluyor.
+
+Altında 5 tane klasör var bunlar:
+	Veri tabanları 
+	Güvenlik 
+	Sunucu nesneleri
+	Replikasyon 
+	Yönetim olmak üzere 5 klasör vardır .
+Ama burada bizi en çok ilgilerndiren kısım veri tabanıdır yani database.
+
+Şimdi veri tabanları dediğimiz şey verilerin depolandığı tabloları barındıran 
+alanlarımızdır.
+
+Tablolardan kastımız şudur.Somut bir örnek düşünelim. 
+Masaüstümüzde bir metin belgesi oluşturalım orada öğrenci sınav not bilgileri yer alsın.
+*Bu veri tabanına ait tablolarımız olacak mesela 
+	*Öğrenci Sınav Not Bilgileri --->DB ( Veri Tabanı )
+	-- Öğrenci Bilgileri -->Table (Tablo) 
+	-- Ders Bilgileri
+	--Sınav Bilgileri 
+	gibi gibi buradaki seçenekler arttırılabilir.
+	Bu tabloların da kendi içerisinde alt değerleri olacak
+Bunların ismi de 
+	Column (Sütun) 
+	Row (Satır)
+	
+	Tabloları oluşturduğumuzda 3 kısım çıkıyor 
+	columnname 
+	datatype 
+	allownull diye 
+	
+	Şimidi öğrenci bilgileri tablomuzda 
+	Öğrencinin bir ıdsi olacak Id o öğrencinin kimlik numarası, benzersiz olur.
+	OgrId değeri otomatik olarak artan bir değerdir.
+	Genellikle 1 den başlar ve devam eder
+	OGRID 
+	OGRAD
+	OGRSOYAD
+	OGRKULUP
+	OGRCINSIYET
+	OGRSEHIR
+	
+	*bigint dediğimiz veri tipi büyük tam sayılarda kullanılıyor 
+	*binary 0 ve 1 lerden oluşan ikilik sayı sisteminde kullanılır 
+	*bit 0 ve 1 şeklinde ama binary gibi değil (iki tane durumu olan ifadeler için kullanılır 
+	*char sabit uzunluktaki karakterler için kullanılır 
+	*date tarih 
+	*datetime tarih zaman 
+	*decimal ondalıklı veri tiplerini tutmamızı sağlar 
+	*float ondalıklı bir veri tipi için kullanılır 
+	*image veri tipi resim video gibi veri tiplerini içerir. ama veri tabanında çok kullanılmaz çünü veritabanını çokça şişiren bir şeydir.Onun yüzünden veriler harddisk gibi uzak bir    sunucuya bağlanır.Veri tabanında onu sadece dosya yolunu tutar. 
+	*int tam sayılar için kullanılıyor.
+	*nchar yine sabit uzunluktaki karakterler için kullanılıyor başındaki n ifadesi latin alfabesi dışındaki değerler için kullanılıyor.Chara göre 2 kat daha fazla yer kaplıyor.
+	*Smalldatetime daha küçük tarih zaman aralığı iin kullanılır
+	*Smallint küçük tam sayı değerleri için + - 32650
+	*Tinyint 0-255 arası tam sayı değerleri
+	*varchar değişken uzunluklu veriler için kullanılıyor 
+	
+	
+	
+	Oluşturduğumuz tabloda sonradan değişklik yapmak için toolsa tıklıyoruz
+	Ardından options seçeneğine tıklıyoruz ve designers kısmına tıklıyoruz 
+	tabloda değişikliğe izin ver seçeneğine tıklıyoruz eğer açıksa izin vermez kapatmamız lazım.
+	
+	
+	
+	
+	
+	
+	
+
+	
