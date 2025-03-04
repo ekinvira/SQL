@@ -1,0 +1,129 @@
+------ SQL Notları 2. bölüm ------
+
+DDL Komutları? (Tablo üzerinde değişiklikler yaparken)
+
+-->Data Defination Language (Data Tanımlama Dili) 
+	-Create --> Oluşturma için
+	-Alter --> Düzenleme
+	-Drop --> Sime için 
+	
+---------------------------------------------------------
+New Query alanına tıklıyoruz manuel olarak ekleme silme ve düzenleme işlemlerini yapacağız
+
+Create Table TBLDERSLER
+(
+DERSID tinyint,
+DERSAD varchar(20)
+)
+bu komutla beraber oluşturma işlemini yapmış oluyoruz
+ 
+Sıradaki yazacağımız komut alter komutudur
+
+Alter Table TBLDERSLER
+Add KONTENJAN smallint
+
+Silmek için ise 
+Alter Table TBLDERSLER
+Drop Column KONTENJAN
+
+---------------------------------------------------------
+DML Komutları nedir? (Veri üzerinde değişiklik yapıyor)
+4 tane DML komutları vardır
+	- Select --> Seçme,Listeleme
+	- Insert --> Ekleme işlemi için 
+	- Update -->Güncelleme işlemi için
+	- Delete -->Silme işlemi için 
+	
+-----------------------------
+
+Select komutunun syntaxı şu şekildedir
+
+Select * From Table 
+* --> All kelimesini karşılıyor
+From --> Den Danı karşılar 
+
+Select * From TBLOGRENCILER 
+	Bu bana öğrenciler tablomu getirir.
+	
+
+Select OGRAD,OGRSOYAD From TBLOGRENCILER
+	Bu ise bana OGRAD ve OGRSOYAD ını getirir.
+
+Select OGRSEHIR From TBLOGRENCILER
+	Bu ise sadece şehir bilgimizi getirir
+	
+--->Select tek başına kullanılacak ifadeden ziyade şartlı olarak kullanılıyor.
+--->Şartlı ifadelerde Where komutu önemlidir.
+
+Select * From TBLOGRENCILER Where OGRAD='Ali'
+Ali ismi olan tbl öğrenciler tablosunu bize getiriyor
+
+SQL de sorgunun neresini seçerseniz orasını çalıştırır.
+Şartlı sorgulamalarda isterseniz birden fazla şarta göre de işlemlerinizi sağlayabilirsiniz
+And bir koşullu şart operatörüdür ve anlamı taşır.
+Select * From TBLOGRENCILER Where OGRSEHIR='Adana' And OGRKULUP='Kitaplık'
+Buradaki and ifadesi ile iki koşulu sağlayanı bize getirmesini sağlıyoruz 
+Buradaki And ifadesini or ile de değiştirebilirsiniz
+Or burada ya da veya anlamı taşımaktadır.
+	
+	Bir de bunların üzerinde aritmetik sorgulamalar da yapılabilir.
+	Bunun için notlar tablomuzu oluşturacağız 
+	Notlar tablomuzda notıd,ogrenci,ders,sınav1,sınav2,sınav3,ortalama,durum şeklinde vereceğiz 
+	Sınav notlamızı smallint olarak belirleyeceğiz peki neden tinyint yapmadık sorusuna cevbımız şu şekilde olacak:
+	Ortalama değeri 255'in üzerine çıktığı zaman 3 sınav notu 255 puanı geçtiği zaman tinyint'in aralığını geçmiş olacak.
+	
+	Ortalama değerini ise Decimal verdik neden sorusunun cevabı ise şu şekildedir:
+	Decimal(x,y) ===> 
+		x = ifadesi virgülden önceki basamak sayısı
+		y = ifadesi virgülden sonraki basamak  sayısı
+	 -- Ortalama:78,65 en fazla 100,00 olabilir
+	 -- Decimal(2,2) ama sql bize diyor ki virgülden sonrası önemli değil ama virgülden önceki kısmılarımız için x ve y nin toplamı olmak zorunda yani
+		Decimal(4,2) gibi o zaman 100,00 olma ihtimalini de alırsak Decimal(5,2) olması gerekiyor.
+		
+		--SELECT * FROM TBLNOTLAR ===> Notlar tablomuzu getiriyor 
+
+SELECT (SINAV1+SINAV2+SINAV3)/3 FROM TBLNOTLAR  ortlamalalarını almamızı sağlıyor 
+		
+----------------------------------------------
+
+INSERT Komutu ekleme işlemleri için kullanılır.
+	Synatxı şu şekildedir:
+		-Insert Into Table (Column1,Column2,Column3,.....) Values (V1,V2,V3...)
+		-Insertte hiyerarşik bir atama yöntemi mevcuttur Column1-V1 ile Column2-V2 ile şeklindedir.
+	
+	Insert Into TBLOGRENCILER (OGRAD,OGRSOYAD,OGRSEHIR) Values ('Baran','Yücedağ','Elazığ')
+	Bu kod satırı öğrenci tablomuza ekleme işlemi yapıyor istediğimiz şekilde hepsini doldurmak zorunda değiliz.
+	
+	Insert Into TBLNOTLAR (OGRENCI,DERS,SINAV1,SINAV3) Values (6,2,88,67)
+	Bu kod satırı da öğrenci notlarında giriş yapmamızı sağlar.
+
+----------------------------------------------
+
+DELETE Komutu silme işlemleri için kullanılır.
+	Syantaxı şu şekildedir:
+		-Delete From TBLDERSLER where DERSID=6
+		Ders ıdsi 6 olan değeri silecektir
+		ya da 
+		Delete From TBLDERSLER where DERSAD='Algoritma'
+		Bu ise ders adı Algoritma olanı silmemizi sağlayacak.
+	
+	Sildiğimiz değelerdeki ıdden sonra gelen ıd numarasıyla devam eder neden 1 den devam etmez peki o da şu şekildedir:
+	SQL de ilişkisel tabloların özellikle ilişkisel tabloların bulunduğu noktada asla silme işlemi yapılmaz 
+	silme işlemi yerine değerler aktif ya da pasif hale getirilir.
+	Nedeni ise eğer oluştuduğumuz tablomuzda ilişki olsaydı arka planda o kullanıldığı için silmemize izin vermezdi.
+	Peki silinse de 1 den başlamaz mı sorusuna da cevabımız hayır olacak.
+	Nedeni ise 100 tane dersimiz olduğunu düşünelim 98 numaralı dersi sildik diyelim 98 kayar 999 artık 98 olur ama 1 numara için 99 ders yer değiştirmek zorunda kalaak onunla ilişkili olan her şey de beraberinde yer değiştirecek 
+	Kısacası ilişkisel tablolar zarar görmesin diye hem de bellek performans ilişkisi olumsuz etkilenmesin diye silme işleminde ıd değeri yeniden başlamaz ya da silinen bir dnin değeri diğerine aktarılmaz.
+	
+	
+----------------------------------------------
+
+TRUNCATE Komutu tabloyu tamamen sıfırlamamızı sağlar.
+	Syntaxı şu şekildedir:
+	Truncate Table TBLDERSLER
+	Tamamen silip sıfırlıyor .
+	Eğer ki verimiz artmaya başladıysa yedek alarak çalışmalıyız 
+	
+----------------------------------------------
+
+UPDATE Komutu güncelleme işlemini yapar.
