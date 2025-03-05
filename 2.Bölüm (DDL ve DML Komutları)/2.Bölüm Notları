@@ -127,3 +127,17 @@ TRUNCATE Komutu tabloyu tamamen sıfırlamamızı sağlar.
 ----------------------------------------------
 
 UPDATE Komutu güncelleme işlemini yapar.
+	Update dediğimiz şey syntaxı hem inserte hem delete yakın.
+
+	Update TBLOGRENCILER Set OGRCINSIYET='Erkek' eğer where yazmazsak o tablodaki her şeyi değiştirir.
+
+	Update TBLOGRENCILER Set OGRCINSIYET='Kız' where OGRID=2 Bu ise öğrenci ıd değeri 2 olanın Cinsiyetini kız olarak değiştirmemizi sağlar.
+
+	Update TBLOGRENCILER Set OGRKULUP='Kitaplık' where OGRAD=''Baran burada ise öğrenci adı Baran olanın kulübünü güncelleme yapmış oluyoruz.
+
+	Ortalama işlemini de artık UPDATE komutu ile yapabiliyoruz.
+	Update TBLNOTLAR Set ORTALAMA=(Sınav1+Sınav2+Sınav3)/3 şekilde her dersin 3 sınav notunu hesaplayıp ortalamasını almasını sağlayabiliyoruz.
+
+	Peki ya ortalamaya bağlı olarak durumları değiştirme işlemini nasıl yaparız.
+	-->Update TBLNOTLAR Set DURUM = 0 where ORTALAMA <= 50 eğer ortalamamız 50 den küçükse false büyükse 1 dönderecek .
+	
