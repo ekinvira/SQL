@@ -1,13 +1,14 @@
------- SQL Notları 2. bölüm ------
+--------------- SQL Notları 2. bölüm -----------------
 
 DDL Komutları? (Tablo üzerinde değişiklikler yaparken)
 
 -->Data Defination Language (Data Tanımlama Dili) 
 	-Create --> Oluşturma için
-	-Alter --> Düzenleme
-	-Drop --> Sime için 
+	-Alter --> Düzenleme için
+	-Drop --> Silme için 
 	
 ---------------------------------------------------------
+
 New Query alanına tıklıyoruz manuel olarak ekleme silme ve düzenleme işlemlerini yapacağız
 
 Create Table TBLDERSLER
@@ -27,6 +28,7 @@ Alter Table TBLDERSLER
 Drop Column KONTENJAN
 
 ---------------------------------------------------------
+
 DML Komutları nedir? (Veri üzerinde değişiklik yapıyor)
 4 tane DML komutları vardır
 	- Select --> Seçme,Listeleme
