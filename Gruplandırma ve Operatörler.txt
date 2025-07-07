@@ -1,0 +1,4 @@
+--------------- SQL Notları 3. Bölüm -----------------
+
+-----> Sum Count Min Max Avg Komutları
+
